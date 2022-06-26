@@ -1,15 +1,12 @@
-runtime: nodejs16 # or another supported version
-
-instance_class: F2
-
-env_variables:
-  BUCKET_NAME: "submissiondicoding99.appspot.com"
+runtime: python27
+api_version: 1
+threadsafe: true
 
 handlers:
   - url: /
-    static_dir: index.html
+    static_files: index.html
+    upload: index.html
 
-  - url: /.*
-    secure: always
-    redirect_http_response_code: 301
-    script: auto
+  - url: /(.*)
+    static_files: \1
+    upload: (.*)
